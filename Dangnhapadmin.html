@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập Quản trị viên</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
+        .auth-container {
+            max-width: 450px;
+            margin: 50px auto;
+        }
+
+        .card {
+            border: 2px solid #3b2416;
+            border-radius: 10px;
+        }
+
+        h3 {
+            color: #3b2416;
+            font-weight: bold;
+        }
+
+        .btn-caffe {
+            background-color: #3b2416; 
+            color: white;
+            font-weight: bold;
+            border: none;
+            padding: 10px;
+        }
+
+        .btn-caffe:hover, .btn-caffe:focus {
+            background-color: #3b2416;
+            color: white;
+            box-shadow: none;
+        }
+
+        .btn-outline-caffe {
+            background-color: transparent;
+            color: #3b2416;
+            font-weight: bold;
+            border: 2px solid #3b2416;
+            padding: 10px;
+        }
+
+        .btn-outline-caffe:hover, .btn-outline-caffe:focus {
+            background-color: transparent;
+            color: #3b2416;
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-container">
+        <div class="card p-4 shadow-sm">
+            <h3 class="text-center mb-4">Đăng Nhập Quản Trị Viên</h3>
+        
+            <form id="f-admin-login">
+                <div class="mb-3">
+                    <label class="form-label text-dark fw-bold">Tên đăng nhập Admin <span style="color:#c6893f">*</span></label>
+                    <input type="text" name="adminUname" class="form-control" required>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label text-dark fw-bold">Mật khẩu cấp cao (Tùy chọn)</label>
+                    <input type="password" name="adminPass" class="form-control">
+                    <small class="text-muted">Có thể để trống nếu hệ thống chưa cài mật khẩu.</small>
+                </div>
+                <button type="submit" class="btn btn-caffe w-100 mb-3">Vào Trang Quản Trị</button>
+                <a href="Dangnhapuser.html" class="btn btn-outline-caffe w-100 d-block text-center text-decoration-none">Quay lại trang Khách hàng</a>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('f-admin-login').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            let uname = this.adminUname.value.trim();
+            let pass = this.adminPass.value.trim();
+
+            if (uname === 'nhóm caffe' && (pass === '123456')) {
+                sessionStorage.setItem('isAdminLoggedIn', 'true');
+                alert('Xác thực quyền Admin thành công!');
+                window.location.href = 'Trangchuadmin.html';
+            } else {
+                alert('LỖI: Quyền truy cập bị từ chối!');
+            }
+        });
+    </script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Trang Quản Trị Hệ Thống (Admin)</title>
+    <style>
+        /* Đồng bộ màu sắc với Lặng Coffee */
+        :root {
+            --mau-nen: #f4f4f4;
+            --nau-caffe: #3b2416;
+            --vang-dong: #c6893f;
+            --trang: #ffffff;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--mau-nen);
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto 30px auto;
+            background: var(--trang);
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid var(--nau-caffe); /* Viền màu nâu */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: var(--nau-caffe);
+            border-bottom: 2px solid var(--vang-dong); /* Đường viền vàng đồng dưới tiêu đề */
+            padding-bottom: 12px;
+            margin-top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--nau-caffe); /* Nền tiêu đề bảng màu nâu */
+            color: var(--trang);
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            font-weight: bold;
+            color: var(--nau-caffe);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--vang-dong);
+        }
+
+        /* Nút bấm không có hiệu ứng hover */
+        button {
+            padding: 10px 15px;
+            background: var(--vang-dong);
+            color: var(--trang);
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        button:hover, button:focus {
+            background: var(--vang-dong);
+            color: var(--trang);
+            outline: none;
+        }
+
+        .btn-delete, .btn-delete-order {
+            background: var(--nau-caffe);
+            padding: 8px 12px;
+            font-size: 14px;
+        }
+
+        .btn-delete:hover, .btn-delete:focus, .btn-delete-order:hover, .btn-delete-order:focus {
+            background: var(--nau-caffe);
+        }
+
+        .total-row {
+            font-weight: bold;
+            font-size: 18px;
+            color: var(--nau-caffe);
+            text-align: right;
+            margin-top: 15px;
+        }
+        
+        .total-row span {
+            color: var(--vang-dong);
+        }
+
+        .img-preview {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PHẦN 1: BẢNG NHẬN ĐƠN HÀNG TỪ KHÁCH -->
+    <div class="container">
+        <h2>Đơn Hàng Mới Nhất Từ Khách</h2>
+        <table id="orderTable">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Giá (Tổng)</th>
+                    <th>Ngày Đặt</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="admin-tb-hang">
+                <tr>
+                    <td colspan="6" style="text-align:center;">Chưa có đơn hàng nào...</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="total-row">Tổng doanh thu hiện tại: <span id="admin-tong">0 đ</span></div>
+    </div>
+
+    <!-- PHẦN 2: QUẢN LÝ ĐẶT BÀN -->
+    <div class="container">
+        <h2>Danh Sách Đặt Bàn</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Khách hàng</th>
+                    <th>Điện thoại</th>
+                    <th>Thời gian</th>
+                    <th>Số lượng / Khu vực</th>
+                    <th>Ghi chú</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="admin-booking-table">
+                <tr>
+                    <td colspan="6" style="text-align:center;">Chưa có lịch đặt bàn nào...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- PHẦN 3: THÊM VÀ QUẢN LÝ SẢN PHẨM -->
+    <div class="container">
+        <h2>Thêm Sản Phẩm Mới Vào Menu</h2>
+        <form id="add-product-form">
+            <div class="form-group">
+                <label>Tên món mới:</label>
+                <input type="text" id="new-name" placeholder="Ví dụ: Sinh tố bơ" required>
+            </div>
+            <div class="form-group">
+                <label>Giá tiền (VNĐ):</label>
+                <input type="number" id="new-price" placeholder="Ví dụ: 45000" required>
+            </div>
+            <div class="form-group">
+                <label>Link hình ảnh:</label>
+                <input type="text" id="new-image" placeholder="Ví dụ: ./IMG/sinhto.jpg hoặc dán URL ảnh" required>
+            </div>
+            <button type="submit" style="width: 100%; margin-top: 10px;">Cập nhật lên trang Khách</button>
+        </form>
+
+        <h2 style="margin-top: 40px;">Kho Sản Phẩm (Dành cho trang khách)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ảnh</th>
+                    <th>Tên Món</th>
+                    <th>Giá</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="inventory-table">
+                <!-- Danh sách sản phẩm trong kho  -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        
+        // 1. TỰ ĐỘNG LẤY ĐƠN HÀNG TỪ KHÁCH & XÓA ĐƠN
+        function getLatestOrder() {
+            let danhSachDonHang = JSON.parse(localStorage.getItem('DanhSachDonHangMoi')) || [];
+            let tbody = document.getElementById('admin-tb-hang');
+            let tongTienSo = 0;
+
+            tbody.innerHTML = '';
+
+            if (danhSachDonHang.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Chưa có đơn hàng nào...</td></tr>';
+                document.getElementById('admin-tong').innerText = '0 đ';
+                return;
+            }
+
+            danhSachDonHang.forEach((donHang, index) => {
+                let stt = index + 1;
+                let gia = Number(donHang.giaThucTe) || 0;
+                let soLuong = donHang.soLuong || 1; 
+                tongTienSo += gia;
+
+                let row = `
+                    <tr>
+                        <td>${stt}</td>
+                        <td><strong>${donHang.tenSanPham}</strong></td>
+                        <td style="text-align: center; font-weight: bold;">${soLuong}</td> 
+                        <td style="color: #c6893f; font-weight: bold;">${donHang.giaHienThi}</td>
+                        <td>${donHang.thoiGian}</td>
+                        <td>
+                            <button class="btn-delete-order" onclick="xoaMotDonHang(${index})">Xong (Xóa)</button>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+
+            document.getElementById('admin-tong').innerText = tongTienSo.toLocaleString('vi-VN') + ' đ';
+        }
+
+        function xoaMotDonHang(index) {
+            let danhSachDonHang = JSON.parse(localStorage.getItem('DanhSachDonHangMoi')) || [];
+            danhSachDonHang.splice(index, 1);
+            localStorage.setItem('DanhSachDonHangMoi', JSON.stringify(danhSachDonHang));
+            getLatestOrder();
+        }
+
+        
+        // 2. LẤY DỮ LIỆU ĐẶT BÀN
+        function renderBookings() {
+            let bookings = JSON.parse(localStorage.getItem('DanhSachDatBan')) || [];
+            let tbody = document.getElementById('admin-booking-table');
+            if (!tbody) return;
+            
+            tbody.innerHTML = '';
+
+            if (bookings.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Chưa có lịch đặt bàn nào...</td></tr>';
+                return;
+            }
+
+            bookings.forEach((bk, index) => {
+                let row = `
+                    <tr>
+                        <td><strong>${bk.hoten}</strong></td>
+                        <td>${bk.dienthoai}</td>
+                        <td>${bk.ngayden} <br> <span style="color: #c6893f; font-weight:bold;">${bk.khunggio}</span></td>
+                        <td>${bk.nhomnguoi} người <br> ${bk.khuvuc}</td>
+                        <td>${bk.ghichu || 'Không'}</td>
+                        <td>
+                            <button class="btn-delete" onclick="deleteBooking(${index})">Đã xử lý</button>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        function deleteBooking(index) {
+            let bookings = JSON.parse(localStorage.getItem('DanhSachDatBan')) || [];
+            bookings.splice(index, 1);
+            localStorage.setItem('DanhSachDatBan', JSON.stringify(bookings));
+            renderBookings();
+        }
+
+        /*
+         3. THÊM SẢN PHẨM MỚI VÀ QUẢN LÝ KHO
+        */
+        function renderInventory() {
+            let products = JSON.parse(localStorage.getItem('DanhSachSanPham')) || [];
+            let tableBody = document.getElementById('inventory-table');
+            if (!tableBody) return;
+
+            tableBody.innerHTML = '';
+
+            if (products.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Kho trống. Hãy thêm món mới!</td></tr>';
+                return;
+            }
+
+            products.forEach((product, index) => {
+                let imgSrc = product.anh ? product.anh : 'https://via.placeholder.com/50';
+                let priceStr = Number(product.gia).toLocaleString('vi-VN') + ' đ';
+
+                let row = `
+                    <tr>
+                        <td style="text-align:center;"><img src="${imgSrc}" class="img-preview"></td>
+                        <td><strong>${product.ten}</strong></td>
+                        <td style="color: #c6893f; font-weight: bold;">${priceStr}</td>
+                        <td>
+                            <button class="btn-delete" onclick="deleteProduct(${index})">Hết hàng (Xóa)</button>
+                        </td>
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        let addForm = document.getElementById('add-product-form');
+        if (addForm) {
+            addForm.addEventListener('submit', function(e) {
+                e.preventDefault(); 
+                
+                let name = document.getElementById('new-name').value;
+                let price = document.getElementById('new-price').value;
+                let image = document.getElementById('new-image').value;
+
+                let products = JSON.parse(localStorage.getItem('DanhSachSanPham')) || [];
+                products.push({ ten: name, gia: price, anh: image });
+                localStorage.setItem('DanhSachSanPham', JSON.stringify(products));
+                
+                alert('Đã thêm món ' + name + ' vào kho!');
+                this.reset(); 
+                renderInventory();
+            });
+        }
+
+        function deleteProduct(index) {
+            let products = JSON.parse(localStorage.getItem('DanhSachSanPham')) || [];
+            let removedItem = products.splice(index, 1)[0]; 
+            localStorage.setItem('DanhSachSanPham', JSON.stringify(products));
+            alert('Đã xóa món: ' + removedItem.ten);
+            renderInventory(); 
+        }
+
+        // Khởi chạy dữ liệu
+        getLatestOrder();
+        renderBookings();
+        renderInventory();
+
+        // Cập nhật liên tục mỗi 2 giây để nhận đơn mới nhất
+        setInterval(() => {
+            getLatestOrder();
+            renderBookings();
+        }, 2000);
+    </script>
+</body>
+</html>

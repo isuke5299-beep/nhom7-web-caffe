@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lặng Coffee</title>
+    <!-- Bootstrap icon-->
+    <link rel="stylesheet" href="./bootstrap-icons-1.13.2/bootstrap-icons-1.13.2/bootstrap-icons.min.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--  CSS -->
+    <link rel="stylesheet" href="./CSS/desgin.css">
+
+
+</head>
+
+<body>
+    <!-- TOP BAR / NAVIGATION -->
+    <header class="site-header navbar navbar-expand-lg fixed-top py-2">
+        <div class="container">
+            <!-- Brand -->
+            <a href="#home" class="navbar-brand brand-logo">
+                <div class="brand-name "><i class="bi bi-cup-hot-fill"></i> LẶNG COFFEE</div>
+                <div class="brand-tagline">Cà phê & Khoảng lặng — TP.HCM</div>
+            </a>
+
+            <!-- Mobile Toggler & Actions -->
+            <div class="d-flex align-items-center order-lg-3 user-actions">
+                <!-- THANH TÌM KIẾM -->
+                <form id="search-form" class="search-bar-container d-none d-lg-flex" onsubmit="timKiemSanPham(event)">
+                    <input type="text" id="search-input" placeholder="Tìm kiếm món nước...">
+                    <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+
+                <div class="dropdown me-2 me-md-3">
+                    <button class="btn p-0 border-0" data-bs-toggle="dropdown" type="button">
+                        <span id="tenNguoiDung"> <i class="bi bi-person-circle fs-3 text-dark"></i></span>
+
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
+                        <li><a href="./Dangkyuser.html" class="dropdown-item">Đăng nhập user</a></li>
+                        <li><a href="./Dangnhapadmin.html" class="dropdown-item">Đăng nhập admin</a></li>
+                        <li><a href="./Dangkyuser.html" class="dropdown-item">Đăng ký user</a></li>
+                        <li><a href="./Dangkyuser.html" class="dropdown-item">Đăng xuất</a></li>
+                    </ul>
+                </div>
+                <!-- Nút Toggler của Bootstrap cho Mobile -->
+                <button class="navbar-toggler border-0 px-1" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Mở menu">
+                    <i class="bi bi-list fs-1 text-dark"></i>
+                </button>
+            </div>
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse order-lg-2" id="mainNav">
+                <!-- Thanh tìm kiếm cho Mobile -->
+                <form id="search-form-mobile" class="search-bar-container d-flex d-lg-none mx-auto mt-3 mb-2"
+                    onsubmit="timKiemSanPhamMobile(event)">
+                    <input type="text" id="search-input-mobile" placeholder="Tìm kiếm món nước...">
+                    <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center mt-3 mt-lg-0">
+                    <li class="nav-item"><a href="#home" class="nav-link custom-nav-link active">Trang chủ</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link custom-nav-link">Về chúng tôi</a></li>
+                    <li class="nav-item"><a href="#menu" class="nav-link custom-nav-link">Thực đơn</a></li>
+                    <li class="nav-item"><a href="#book" class="nav-link custom-nav-link">Đặt bàn</a></li>
+                    <li class="nav-item"><a href="#review" class="nav-link custom-nav-link">Đánh giá</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link custom-nav-link">Liên hệ</a></li>
+                    <li class="nav-item"><a href="#donhang" class="nav-link custom-nav-link">Đơn hàng</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <!-- Cột nội dung trái -->
+                <div class="col-lg-7 col-md-12 mb-5 mb-lg-0 text-md-start text-center">
+                    <div class="badge-origin"><i class="bi bi-check-circle-fill"></i> 100% Hạt Rang Mộc TP.HCM</div>
+                    <h1 class="hero-heading">Khởi đầu ngày mới với <em>Khoảng Lặng Cà Phê</em></h1>
+                    <p class="hero-description">
+                        Lặng Coffee mang đến những ly cà phê phin đậm đà giữa lòng TP.HCM, chắt chiu từ hạt Robusta Đắk
+                        Lắk và Arabica Cầu Đất tuyển chọn, rang mộc thủ công không tẩm ướp phụ gia.
+                    </p>
+                    <div
+                        class="hero-call-to-action justify-content-center justify-content-md-start d-flex gap-3 flex-wrap">
+                        <a href="#menu" class="cta-btn primary"><i class="bi bi-cup-fill"></i> Đặt món giao ngay</a>
+                        <a href="#about" class="cta-btn secondary"><i class="bi bi-compass-fill"></i> Câu chuyện
+                            Lặng</a>
+                    </div>
+
+                    <!-- 3 FEATURE CARDS -->
+                    <div class="row mt-4 pt-4 border-top"
+                        style="border-style: dashed !important; border-color: rgba(139, 90, 43, 0.25) !important;">
+                        <div class="col-md-4 col-sm-12 mb-3 mb-md-0">
+                            <div
+                                class="point-card d-flex align-items-center gap-3 justify-content-center justify-content-md-start">
+                                <i class="bi bi-patch-check-fill"></i>
+                                <div class="point-info text-start">
+                                    <h4>Chất Lượng Chuẩn</h4>
+                                    <p>Cà phê rang mộc mạc 100%</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12 mb-3 mb-md-0">
+                            <div
+                                class="point-card d-flex align-items-center gap-3 justify-content-center justify-content-md-start">
+                                <i class="bi bi-truck"></i>
+                                <div class="point-info text-start">
+                                    <h4>Giao Siêu Tốc</h4>
+                                    <p>Nhận hàng trong 30 phút</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <div
+                                class="point-card d-flex align-items-center gap-3 justify-content-center justify-content-md-start">
+                                <i class="bi bi-gift-fill"></i>
+                                <div class="point-info text-start">
+                                    <h4>Ưu Đãi Mỗi Ngày</h4>
+                                    <p>Giảm 20% cho đơn đầu tiên</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cột hình ảnh phải -->
+                <div class="col-lg-5 col-md-12 text-center hero-media">
+                    <img src="./IMG/imgdatbandanhgia/home-img-2.png" class="hero-img-animated img-fluid"
+                        alt="Món đặc biệt Lặng Coffee">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GIỚI THIỆU / ABOUT SECTION -->
+    <section class="about" id="about">
+        <div class="container">
+            <h1 class="heading">Về chúng tôi <span>Câu Chuyện LẶNG</span></h1>
+            <p class="sub-heading-desc">Tâm huyết mang tinh hoa cà phê Việt nguyên bản đến với mỗi khách hàng tại Sài
+                Gòn nơi nhộn nhịp với những con tim đầy nhiệt huyết.</p>
+
+            <div class="row align-items-center mt-5">
+                <div class="col-lg-6 mb-5 mb-lg-0 text-center image">
+                    <img src="./IMG/imgdatbandanhgia/about-img.png" class="img-fluid w-100" style="max-width: 46rem;"
+                        alt="Không gian và cà phê Lặng Coffee">
+                </div>
+
+                <div class="col-lg-6 content">
+                    <span class="tag">Hương vị thuần chất</span>
+                    <h3 class="title">Cà phê sạch từ nông trại đến bàn thưởng thức</h3>
+                    <p>Giữa Sài Gòn luôn vội vã, **LẶNG** được tạo nên như một khoảng dừng nhỏ để mọi người chậm lại. Ở
+                        đây, một ly cà phê không chỉ để uống, mà còn là lúc để nghỉ ngơi, suy nghĩ và lắng nghe chính
+                        mình. Có những ngày vui, có những ngày mệt mỏi, nhưng chỉ cần ngồi xuống, nhấp một ngụm cà phê
+                        và tận hưởng vài phút yên bình, mọi thứ dường như nhẹ nhàng hơn.</p>
+                    <p>Không chỉ phục vụ tại không gian quán ấm cúng, dịch vụ giao hàng trực tuyến của Lặng Coffee cam
+                        kết đóng gói cách nhiệt cẩn thận, giữ nguyên chất lượng đồ uống như vừa được pha chế tại quầy.
+                    </p>
+                    <a href="#menu" class="btn mt-3"><i class="fas fa-mug-hot"></i> Khám phá thực đơn ngay</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THỰC ĐƠN -->
+    <!-- <div class="container py-5" id="menu "> -->
+    <div class="container py-5" id="menu"></div>
+    <h2 class="text-center mb-4 text-dark fw-bold ">THỰC ĐƠN LẶNG COFFEE</h2>
+    <div class="row justify-content-center g-4 mb-4 product-row">
+        <div class="col-md-3 product-item scroll-reveal">
+            <div class="card h-100 shadow-sm">
+                <img src="./IMG/imgdatbandanhgia/11-espresso.png" class="card-img-top"
+                    style="height: 160px; object-fit: cover;">
+                <div class="card-body text-center">
+                    <h5 class="card-title product-name">Espresso</h5>
+                    <p class="card-text text-warning fw-bold">25.000 đ</p>
+                    <button class="btn btn-dark btn-sm"
+                        onclick="hienChiTiet('Espresso', '25.000 đ', 'Cà phê Espresso đậm đà, chiết xuất chuẩn vị truyền thống.', './IMG/imgdatbandanhgia/11-espresso.png')">Xem
+                        Miêu Tả</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 product-item scroll-reveal">
+            <div class="card h-100 shadow-sm">
+                <img src="./IMG/imgdatbandanhgia/06-latte.png" class="card-img-top"
+                    style="height: 160px; object-fit: cover;">
+                <div class="card-body text-center">
+                    <h5 class="card-title product-name">Cà Phê Latte</h5>
+                    <p class="card-text text-warning fw-bold">35.000 đ</p>
+                    <button class="btn btn-dark btn-sm"
+                        onclick="hienChiTiet('Cà Phê Latte', '35.000 đ', 'Hương vị cà phê êm dịu hòa quyện cùng lớp sữa nóng mịn màng.', './IMG/imgdatbandanhgia/06-latte.png')">Xem
+                        Miêu Tả</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 product-item scroll-reveal">
+            <div class="card h-100 shadow-sm">
+                <img src="./IMG/imgdatbandanhgia/08-tra-dao-cam-sa.png" class="card-img-top"
+                    style="height: 160px; object-fit: cover;">
+                <div class="card-body text-center">
+                    <h5 class="card-title product-name">Trà Đào Cam Sả</h5>
+                    <p class="card-text text-warning fw-bold">32.000 đ</p>
+                    <button class="btn btn-dark btn-sm"
+                        onclick="hienChiTiet('Trà Đào Cam Sả', '32.000 đ', 'Trà thanh mát kết hợp cùng miếng đào giòn và hương sả thơm lừng.', './IMG/imgdatbandanhgia/08-tra-dao-cam-sa.png')">Xem
+                        Miêu Tả</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 product-item scroll-reveal">
+            <div class="card h-100 shadow-sm">
+                <img src="./IMG/imgdatbandanhgia/banh_tiramisu.png" class="card-img-top"
+                    style="height: 160px; object-fit: cover;">
+                <div class="card-body text-center">
+                    <h5 class="card-title product-name">Bánh Tiramisu</h5>
+                    <p class="card-text text-warning fw-bold">42.000 đ</p>
+                    <button class="btn btn-dark btn-sm"
+                        onclick="hienChiTiet('Bánh Tiramisu', '42.000 đ', 'Bánh ngọt mềm mại, thơm ngậy vị cacao nguyên chất và kem tươi.', './IMG/imgdatbandanhgia/banh_tiramisu.png')">Xem
+                        Miêu Tả</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center g-4 product-row">
+        <div class="col-md-3 product-item scroll-reveal">
+            <div class="card h-100 shadow-sm">
+                <img src="./IMG/imgdatbandanhgia/05-americano.png" class="card-img-top"
+                    style="height: 160px; object-fit: cover;">
+                <div class="card-body text-center">
+                    <h5 class="card-title product-name">Americano Cam</h5>
+                    <p class="card-text text-warning fw-bold">35.000 đ</p>
+                    <button class="btn btn-dark btn-sm"
+                        onclick="hienChiTiet('Americano Cam', '35.000 đ', 'Sự kết hợp độc đáo giữa cà phê Americano và vị chua ngọt tươi mát của cam vàng.', './IMG/imgdatbandanhgia/05-americano.png')">Xem
+                        Miêu Tả</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 product-item scroll-reveal">
+            <div class="card h-100 shadow-sm">
+                <img src="./IMG/imgdatbandanhgia/07-cappuccino.png" class="card-img-top"
+                    style="height: 160px; object-fit: cover;">
+                <div class="card-body text-center">
+                    <h5 class="card-title product-name">Cappuccino</h5>
+                    <p class="card-text text-warning fw-bold">35.000 đ</p>
+                    <button class="btn btn-dark btn-sm"
+                        onclick="hienChiTiet('Cappuccino', '35.000 đ', 'Cân bằng hoàn hảo giữa hương vị cà phê đậm, sữa nóng và lớp bọt sữa dày xốp.', './IMG/imgdatbandanhgia/07-cappuccino.png')">Xem
+                        Miêu Tả</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 product-item scroll-reveal">
+            <div class="card h-100 shadow-sm">
+                <img src="./IMG/imgdatbandanhgia/tra_chanh_mat_ong.png" class="card-img-top"
+                    style="height: 160px; object-fit: cover;">
+                <div class="card-body text-center">
+                    <h5 class="card-title product-name">Trà Chanh Mật Ong</h5>
+                    <p class="card-text text-warning fw-bold">32.000 đ</p>
+                    <button class="btn btn-dark btn-sm"
+                        onclick="hienChiTiet('Trà Chanh Mật Ong', '32.000 đ', 'Thức uống giải khát thanh nhẹ từ trà tươi kết hợp mật ong nguyên chất.', './IMG/imgdatbandanhgia/tra_chanh_mat_ong.png')">Xem
+                        Miêu Tả</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 product-item scroll-reveal">
+            <div class="card h-100 shadow-sm">
+                <img src="./IMG/imgdatbandanhgia/banh_carrot.png" class="card-img-top"
+                    style="height: 160px; object-fit: cover;">
+                <div class="card-body text-center">
+                    <h5 class="card-title product-name">Bánh Cà Rốt</h5>
+                    <p class="card-text text-warning fw-bold">38.000 đ</p>
+                    <button class="btn btn-dark btn-sm"
+                        onclick="hienChiTiet('Bánh Cà Rốt', '38.000 đ', 'Bánh ngọt thơm bùi, lớp kem phô mai béo ngậy ăn cực kỳ cuốn.', './IMG/imgdatbandanhgia/banh_carrot.png')">Xem
+                        Miêu Tả</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Vùng chứa sản phẩm thêm từ Admin -->
+    <div id="admin-menu-container"></div>
+    </div>
+
+    <!-- KHUNG MIÊU TẢ (CÓ THÊM Ô NHẬP SỐ LƯỢNG) -->
+    <div class="container mb-5" id="khung-mien-ta" style="display: none;">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card border-dark shadow">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <img id="anh-sp" class="img-fluid rounded"
+                                    style="width: 100%; height: 150px; object-fit: cover;">
+                            </div>
+                            <div class="col-md-7">
+                                <h4 id="ten-sp" class="text-dark"></h4>
+                                <p class="text-warning fw-bold fs-5" id="gia-sp"></p>
+                                <p class="text-muted" id="noi-dung-mota"></p>
+
+                                <!-- Ô Nhập Số Lượng -->
+                                <div class="d-flex align-items-center gap-2 mt-2">
+                                    <label for="so-luong-sp" class="fw-bold mb-0">Số lượng:</label>
+                                    <input type="number" id="so-luong-sp" class="form-control text-center" value="1"
+                                        min="1" style="width: 80px;">
+                                </div>
+
+                                <div class="d-flex gap-2 mt-3">
+                                    <button class="btn btn-warning fw-bold" onclick="datMuaSanPham()"> Đặt Mua</button>
+                                    <button class="btn btn-secondary" onclick="dongMieuTa()">Đóng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BẢNG ĐƠN HÀNG ĐÃ ĐẶT TRÊN TRANG CHỦ -->
+    <section class="container py-5" id="donhang">
+        <div class="card shadow-sm border-0 p-4">
+            <h2 class="text-center mb-4 text-dark fw-bold">ĐƠN HÀNG CỦA BẠN</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Giá (Tổng)</th>
+                            <th>Ngày Đặt</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody id="khach-tb-hang">
+                        <tr>
+                            <td colspan="6" class="text-center text-muted">Chưa có đơn hàng nào...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-end fw-bold fs-5 text-danger mt-2">
+                Tổng tiền đơn này: <span id="khach-tong">0 đ</span>
+            </div>
+        </div>
+    </section>
+
+    <!--- ĐÁNH GIÁ -->
+    <!--- ĐÁNH GIÁ (Dạng Slideshow / Carousel) -->
+    <section class="danhgia-section py-5" id="review">
+        <div class="container">
+            <div class="danhgia-header text-center mb-5">
+                <div class="watermark-title">ĐÁNH GIÁ</div>
+                <h2 class="main-title">KHÁCH HÀNG NÓI GÌ</h2>
+                <p class="description mx-auto">
+                    Những cảm nhận chân thực nhất từ những người bạn đã ghé thăm và thưởng thức cà phê Lặng tại TPHCM.
+                </p>
+            </div>
+
+            <!-- Bắt đầu Bootstrap Carousel -->
+            <div id="carouselDanhGia" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+
+                <!-- Nút chuyển slide (Dots) -->
+                <div class="carousel-indicators" style="bottom: -50px;">
+                    <button type="button" data-bs-target="#carouselDanhGia" data-bs-slide-to="0" class="active bg-dark"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselDanhGia" data-bs-slide-to="1" class="bg-dark"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselDanhGia" data-bs-slide-to="2" class="bg-dark"
+                        aria-label="Slide 3"></button>
+                </div>
+
+                <div class="carousel-inner pb-4">
+                    <!-- Đánh giá 1 -->
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7 col-md-9">
+                                <div class="danhgia-card h-100 mx-auto">
+                                    <div class="quote-icon-top"><i class="bi bi-quote"></i></div>
+                                    <div class="avatar-wrapper">
+                                        <img src="./IMG/imgdatbandanhgia/halinh.jpeg" alt="Trịnh Trần Phương Tuấn">
+                                    </div>
+                                    <div class="stars">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i>
+                                    </div>
+                                    <p class="comment">
+                                        "Giao diện đặt món trên điện thoại cực kỳ tiện, chọn size đường đá và topping dễ
+                                        dàng. Món Bạc xỉu cốt dừa béo bùi ngon xuất sắc. Điểm 10 cho chất lượng phục vụ
+                                        và đóng gói thân thiện môi trường!"
+                                    </p>
+                                    <div class="card-footer bg-transparent border-0">
+                                        <div class="author-info">
+                                            <h4 class="name">Trịnh Trần Phương Tuấn</h4>
+                                            <span class="role">Ca sĩ</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Đánh giá 2 -->
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7 col-md-9">
+                                <div class="danhgia-card h-100 mx-auto">
+                                    <div class="quote-icon-top"><i class="bi bi-quote"></i></div>
+                                    <div class="avatar-wrapper">
+                                        <img src="./IMG/imgdatbandanhgia/Jack.jpeg" alt="Trần Hà Linh">
+                                    </div>
+                                    <div class="stars">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i>
+                                    </div>
+                                    <p class="comment">
+                                        "Cà phê phin ở LẶNG đúng chuẩn gu rang mộc, không hề bị khét hay nồng mùi bắp
+                                        đậu cháy như các quán lề đường. Đặt giao hàng qua website tới văn phòng chỉ mất
+                                        20 phút mà đá vẫn còn nguyên, ly đóng gói rất chỉnh chu!"
+                                    </p>
+                                    <div class="card-footer bg-transparent border-0">
+                                        <div class="author-info">
+                                            <h4 class="name">Trần Hà Linh</h4>
+                                            <span class="role">Kỹ sư phần mềm</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Đánh giá 3 -->
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7 col-md-9">
+                                <div class="danhgia-card h-100 mx-auto">
+                                    <div class="quote-icon-top"><i class="bi bi-quote"></i></div>
+                                    <div class="avatar-wrapper">
+                                        <img src="./IMG/imgdatbandanhgia/sontung.jpeg" alt="Sơn Tùng MTP">
+                                    </div>
+                                    <div class="stars">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i>
+                                    </div>
+                                    <p class="comment">
+                                        "Mê nhất món Cà Phê Muối và Trà Sen Vàng Kem Cheese ở đây! Lớp kem béo mịn mặn
+                                        mặn cực kỳ cuốn. Quán có không gian sân vườn lẫn máy lạnh làm việc rất yên tĩnh,
+                                        ổ điện cắm laptop đầy đủ."
+                                    </p>
+                                    <div class="card-footer bg-transparent border-0">
+                                        <div class="author-info">
+                                            <h4 class="name"> Sơn Tùng MTP</h4>
+                                            <span class="role"> Ca sĩ </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nút điều hướng Trái/Phải -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselDanhGia"
+                    data-bs-slide="prev" style="filter: invert(100%); width: 10%;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselDanhGia"
+                    data-bs-slide="next" style="filter: invert(100%); width: 10%;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <!-- Kết thúc Bootstrap Carousel -->
+
+            <div class="action-button text-center mt-5 pt-3">
+                <a href="./Qui-danhgia.html" class="text-decoration-none">
+                    <button class="btn btn-warning fw-bold rounded-pill px-4 py-2 border border-dark">
+                        <i class="fa-solid fa-pencil"></i> VIẾT ĐÁNH GIÁ CỦA BẠN
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ĐẶT BÀN -->
+    <section class="booking-section py-5" id="book">
+        <div class="container">
+            <!-- Tiêu đề -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 col-md-10 text-center booking-header">
+                    <div class="watermark-title">ĐẶT BÀN</div>
+                    <h2 class="main-title text-white">GIỮ CHỖ TRƯỚC</h2>
+                    <p class="description">
+                        Đặt bàn nhanh tại Lặng Coffee để có không gian làm việc yên tĩnh hoặc góc chuyện trò ấm cúng
+                        cùng bạn bè.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+                    <div class="booking-card shadow-lg" id="bookingForm">
+                        <form class="booking-form">
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label class="form-label fw-bold"><i class="bi bi-person-fill"></i> Họ và tên
+                                        *</label>
+                                    <input type="text" class="form-control" placeholder="Ví dụ: Nguyễn Văn An" required
+                                        name="hoten">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold"><i class="bi bi-telephone-fill"></i> Số điện thoại
+                                        *</label>
+                                    <input type="tel" class="form-control" placeholder="Ví dụ: 0901234567" required
+                                        name="dienthoai">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label class="form-label fw-bold"><i class="bi bi-calendar-event-fill"></i> Ngày đến
+                                        *</label>
+                                    <input type="date" class="form-control" value="2026-09-20" required name="ngayden">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold"><i class="bi bi-clock-fill"></i> Khung giờ
+                                        *</label>
+                                    <select class="form-select" required name="khunggio">
+                                        <option value="" disabled selected>Chọn giờ đến</option>
+                                        <option value="08:00">08:00</option>
+                                        <option value="09:00">09:00</option>
+                                        <option value="10:00">10:00</option>
+                                        <option value="14:00">14:00</option>
+                                        <option value="18:00">18:00</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label class="form-label fw-bold"><i class="bi bi-people-fill"></i> Số lượng khách
+                                        *</label>
+                                    <select class="form-select" required name="nhomnguoi">
+                                        <option value="3-4">3 - 4 người (Nhóm nhỏ)</option>
+                                        <option value="1-2">1 - 2 người</option>
+                                        <option value="5-10">5 - 10 người</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold"><i class="bi bi-border-style"></i> Khu vực ngồi
+                                        mong muốn *</label>
+                                    <select class="form-select" required name="khuvuc">
+                                        <option value="san-vuon">Sân vườn thoáng mát, nhiều cây xanh</option>
+                                        <option value="trong-nha">Trong nhà máy lạnh</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-12">
+                                    <label class="form-label fw-bold"><i class="bi bi-shop"></i> Chi nhánh Thành Phố
+                                        Hồ Chí Minh</label>
+                                    <select class="form-select" required name="chinhanh">
+                                        <option value="hochiminh">5 Đ. Nguyễn Bá Tuyển, Bảy Hiền, Hồ Chí Minh 700000,
+                                            Vietnam</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <label class="form-label fw-bold"><i class="bi bi-chat-dots-fill"></i> Ghi chú thêm
+                                        (Tùy chọn)</label>
+                                    <textarea class="form-control" rows="3"
+                                        placeholder="Ví dụ: Cần chuẩn bị trước ổ cắm điện, bàn cạnh cửa sổ, hỗ trợ cắm hoa sinh nhật..."
+                                        name="ghichu"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-2">
+                                <button type="submit" class="btn btn-submit text-white">
+                                    <i class="bi bi-check-circle-fill"></i> XÁC NHẬN ĐẶT BÀN
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
+        <div class="container-fluid px-md-5">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 box">
+                    <h3>LẶNG COFFEE</h3>
+                    <p>Thương hiệu cà phê rang mộc thủ công tại TP.HCM. Gìn giữ tinh hoa cà phê Việt Nam qua từng hạt
+                        nguyên chất 100%, mang đến sự chăm chút, tận tâm giữa nhịp sống năng động của Sài thành.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-btn" aria-label="Instagram"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="social-btn" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                        <a href="#" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 box">
+                    <h3>Liên kết nhanh</h3>
+                    <a href="#home"><i class="bi bi-chevron-compact-right"></i> Trang chủ</a>
+                    <a href="#about"><i class="bi bi-chevron-compact-right"></i> Câu chuyện thương hiệu</a>
+                    <a href="#menu"><i class="bi bi-chevron-compact-right"></i> Thực đơn đồ uống</a>
+                    <a href="#book"><i class="bi bi-chevron-compact-right"></i> Đặt bàn giữ chỗ</a>
+                    <a href="#review"><i class="bi bi-chevron-compact-right"></i> Khách hàng đánh giá</a>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 box">
+                    <h3>Tổng đài liên hệ</h3>
+                    <a href="tel:02923888999"><i class="bi bi-telephone-fill"></i></i> 0292 3888 999 (Bàn)</a>
+                    <a href="tel:0901234567"><i class="bi bi-telephone-fill"></i> 0901 234 567 (Hotline)</a>
+                    <a href="mailto:lienhe@langcoffee.vn"><i class="bi bi-envelope-at-fill"></i>
+                        lienhe@langcoffee.vn</a>
+                    <p style="margin-top: 1rem; color: #bbb; font-size: 1.4rem; line-height: 1.8;">
+                        <i class="bi bi-geo-alt-fill" style="color: var(--accent-gold); margin-right: 0.8rem;"></i>
+                        5 Đ. Nguyễn Bá Tuyển, Bảy Hiền, Hồ Chí Minh 700000, Vietnam
+                    </p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 box map-box">
+                    <h3>Bản đồ</h3>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.1503254233103!2d106.64815039999999!3d10.799796400000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529005acce13f%3A0x461bc8d801ce6122!2zTOG6tk5HIENBRkU!5e0!3m2!1sen!2s!4v1789873193622!5m2!1sen!2s"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="credit">
+            © 2026 <span>Lặng Coffee</span> — Cà phê Việt, Hương vị nguyên bản | Tất cả quyền được bảo lưu
+        </div>
+    </footer>
+    <!--  NHẠC NỀN  -->
+    <audio id="bg-music" loop>
+        <source src="./music/ROSÉ - Gone (Instrumental Demo).mp3" type="audio/mpeg">
+    </audio>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script src="./JS/web-caffe.js"></script>
+</body>
+
+</html>

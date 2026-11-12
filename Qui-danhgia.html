@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đánh giá khách hàng - Lặng</title>
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #f8f5ef;
+            color: #49372b;
+            font-family: Arial;
+        }
+
+        
+        .dauTrang {
+            background-color: #49372b;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .dauTrang h2 {
+            font-weight: bold;
+            letter-spacing: 4px;
+        }
+
+        .dauTrang p {
+            color: #e5d6c5;
+            margin-bottom: 0;
+        }
+
+        
+        .tieuDe {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .tieuDe h2 {
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .tieuDe p {
+            color: #88776a;
+        }
+
+        
+        .diemDanhGia {
+            background-color: #eee5d9;
+            border: 1px solid #e0d2c2;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .diemDanhGia h2 {
+            color: #b17a3d;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .khungDanhGia {
+            background-color: #fffdf9;
+            border: 1px solid #e8ded2;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .khungDanhGia h4 {
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-control,
+        .form-select {
+            padding: 11px;
+            border-radius: 8px;
+            border: 1px solid #d8c8b8;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #a77b53;
+            box-shadow: 0 0 5px #d8c8b8;
+        }
+
+        
+        .nutGui {
+            background-color: #654936;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .nutGui:hover {
+            background-color: #8b674b;
+            color: white;
+        }
+
+        .khungHienThi {
+            background-color: #fffdf9;
+            border: 1px solid #e8ded2;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 18px;
+        }
+
+        .tenKhach {
+            font-weight: bold;
+            color: #49372b;
+        }
+
+        .soSao {
+            color: #c28b42;
+            font-size: 20px;
+        }
+
+        .noiDung {
+            color: #685648;
+            line-height: 1.7;
+        }
+
+       
+        .cuoiTrang {
+            background-color: #49372b;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .khungDanhGia {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PHẦN ĐẦU TRANG -->
+    <div class="dauTrang">
+        <h2>LẶNG COFFEE</h2>
+        <p>Chậm lại một chút, chọn một vị cà phê dành riêng cho bạn</p>
+    </div>
+
+    <div class="container my-5">
+
+        <!-- TIÊU ĐỀ -->
+        <div class="tieuDe">
+            <h2>ĐÁNH GIÁ TỪ KHÁCH HÀNG</h2>
+            <p>Mỗi chia sẻ của bạn là một điều quý giá đối với Lặng.</p>
+        </div>
+
+        
+        <div class="diemDanhGia">
+            <h5>ĐIỂM ĐÁNH GIÁ TRUNG BÌNH</h5>
+            <h2 id="diemTrungBinh">4.9 ★</h2>
+            
+        </div>
+
+        <!-- FORM ĐÁNH GIÁ -->
+        <div class="khungDanhGia">
+
+            <h4>Chia sẻ trải nghiệm của bạn</h4>
+
+            <form id="formDanhGia">
+
+                <!-- Họ tên -->
+                <div class="mb-3">
+                    <label class="form-label">Họ và tên</label>
+                    <input type="text" class="form-control"
+                        id="tenKhachHang"
+                        placeholder="Nhập họ tên của bạn"
+                        required>
+                </div>
+
+                <!-- Đồ uống -->
+                <div class="mb-3">
+                    <label class="form-label">Đồ uống bạn đã thưởng thức</label>
+
+                    <select class="form-select" id="doUong" required>
+                        <option value="">-- Chọn đồ uống --</option>
+                        <option>Cà phê đen</option>
+                        <option>Cà phê sữa</option>
+                        <option>Bạc xỉu</option>
+                        <option>Trà đào</option>
+                        <option>Trà trái cây</option>
+                        <option>Matcha latte</option>
+                        <option>Khác</option>
+                    </select>
+                </div>
+
+                <!-- Số sao -->
+                <div class="mb-3">
+                    <label class="form-label">Mức độ hài lòng</label>
+
+                    <select class="form-select" id="soSao" required>
+                        <option value="">-- Chọn số sao --</option>
+                        <option value="5">5 sao - Rất hài lòng</option>
+                        <option value="4">4 sao - Hài lòng</option>
+                        <option value="3">3 sao - Bình thường</option>
+                        <option value="2">2 sao - Chưa hài lòng</option>
+                        <option value="1">1 sao - Không hài lòng</option>
+                    </select>
+                </div>
+
+                <!-- Không gian -->
+                <div class="mb-3">
+                    <label class="form-label">Cảm nhận về không gian</label>
+
+                    <select class="form-select" id="khongGian" required>
+                        <option value="">-- Chọn cảm nhận --</option>
+                        <option>Ấm cúng, yên tĩnh</option>
+                        <option>Thoáng mát, thoải mái</option>
+                        <option>Trang trí đẹp</option>
+                        <option>Phù hợp học tập và làm việc</option>
+                        <option>Cần cải thiện thêm</option>
+                    </select>
+                </div>
+
+                <!-- Phục vụ -->
+                <div class="mb-3">
+                    <label class="form-label">Đánh giá chất lượng phục vụ</label>
+
+                    <select class="form-select" id="phucVu" required>
+                        <option value="">-- Chọn đánh giá --</option>
+                        <option>Nhân viên thân thiện, nhiệt tình</option>
+                        <option>Phục vụ nhanh chóng</option>
+                        <option>Đồ uống được chuẩn bị tốt</option>
+                        <option>Cần cải thiện thêm</option>
+                    </select>
+                </div>
+
+                <!-- Nội dung -->
+                <div class="mb-4">
+                    <label class="form-label">Nội dung đánh giá</label>
+
+                    <textarea class="form-control"
+                        id="noiDungDanhGia"
+                        rows="4"
+                        placeholder="Hãy chia sẻ cảm nhận của bạn..."
+                        required></textarea>
+                </div>
+
+                <!-- Nút gửi -->
+                <div class="text-center">
+                    <button type="submit" class="btn nutGui">
+                        GỬI ĐÁNH GIÁ
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- KHU VỰC HIỂN THỊ ĐÁNH GIÁ -->
+        <h4 class="mt-5 mb-4 fw-bold">
+            KHÁCH HÀNG NÓI GÌ VỀ LẶNG?
+        </h4>
+
+        <div id="danhSachDanhGia">
+            <p class="text-center text-muted">
+                Chưa có đánh giá nào. Hãy là người đầu tiên chia sẻ nhé!
+            </p>
+        </div>
+
+    </div>
+
+    <!-- CUỐI TRANG -->
+    <div class="cuoiTrang">
+        <p>© 2026 LẶNG COFFEE - Cảm ơn bạn đã ghé thăm!</p>
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // Tạo danh sách lưu các đánh giá
+        var danhSachDanhGia = [];
+
+        // Lấy form đánh giá
+        var formDanhGia = document.getElementById('formDanhGia');
+
+        // Khi khách nhấn nút gửi
+        formDanhGia.addEventListener('submit', function(event) {
+
+            // Ngăn trang web tải lại
+            event.preventDefault();
+
+            // Lấy thông tin khách hàng nhập
+            var ten = document.getElementById('tenKhachHang').value;
+            var doUong = document.getElementById('doUong').value;
+            var sao = parseInt(document.getElementById('soSao').value);
+            var khongGian = document.getElementById('khongGian').value;
+            var phucVu = document.getElementById('phucVu').value;
+            var noiDung = document.getElementById('noiDungDanhGia').value;
+
+            // Kiểm tra nội dung
+            if (ten.trim() == '' || noiDung.trim() == '') {
+                alert('Vui lòng nhập đầy đủ thông tin!');
+                return;
+            }
+
+            // Lấy ngày hiện tại
+            var ngay = new Date().toLocaleDateString('vi-VN');
+
+            // Tạo một đánh giá mới
+            var danhGia = {
+                ten: ten,
+                doUong: doUong,
+                sao: sao,
+                khongGian: khongGian,
+                phucVu: phucVu,
+                noiDung: noiDung,
+                ngay: ngay
+            };
+
+           
+            danhSachDanhGia.push(danhGia);
+            hienThiDanhGia();
+            formDanhGia.reset();
+
+            alert('Cảm ơn bạn đã gửi đánh giá đến Lặng!');
+
+        });
+
+
+        // HÀM HIỂN THỊ ĐÁNH GIÁ
+        function hienThiDanhGia() {
+
+            var noiHienThi = document.getElementById('danhSachDanhGia');
+
+            var tongSao = 0;
+
+        
+            noiHienThi.innerHTML = '';
+
+            for (var i = 0; i < danhSachDanhGia.length; i++) {
+
+                tongSao = tongSao + danhSachDanhGia[i].sao;
+
+                
+                var hienThiSao = '';
+
+                for (var j = 1; j <= 5; j++) {
+                    if (j <= danhSachDanhGia[i].sao) {
+                        hienThiSao = hienThiSao + '★';
+                    } else {
+                        hienThiSao = hienThiSao + '☆';
+                    }
+                }
+
+               
+                noiHienThi.innerHTML +=
+                    '<div class="khungHienThi">' +
+
+                        '<div class="d-flex justify-content-between">' +
+                            '<span class="tenKhach">' +
+                                danhSachDanhGia[i].ten +
+                            '</span>' +
+
+                            '<span class="text-muted">' +
+                                danhSachDanhGia[i].ngay +
+                            '</span>' +
+                        '</div>' +
+
+                        '<p class="soSao mt-2">' +
+                            hienThiSao +
+                        '</p>' +
+
+                        '<p class="noiDung">' +
+                            '<strong>Đồ uống:</strong> ' +
+                            danhSachDanhGia[i].doUong +
+                        '</p>' +
+
+                        '<p class="noiDung">' +
+                            '<strong>Không gian:</strong> ' +
+                            danhSachDanhGia[i].khongGian +
+                        '</p>' +
+
+                        '<p class="noiDung">' +
+                            '<strong>Phục vụ:</strong> ' +
+                            danhSachDanhGia[i].phucVu +
+                        '</p>' +
+
+                        '<p class="noiDung mb-0">' +
+                            '<strong>Nhận xét:</strong> ' +
+                            danhSachDanhGia[i].noiDung +
+                        '</p>' +
+
+                    '</div>';
+            }
+
+            // Tính điểm trung bình
+            var diemTB = tongSao / danhSachDanhGia.length;
+
+            document.getElementById('diemTrungBinh').innerText =
+                diemTB.toFixed(1) + ' ★';
+
+            document.getElementById('soLuongDanhGia').innerText =
+                'Có ' + danhSachDanhGia.length + ' lượt đánh giá';
+
+        }
+
+    </script>
+
+</body>
+
+</html>

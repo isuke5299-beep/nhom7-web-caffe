@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập Khách hàng</title>
+    <!-- Link Bootstrap -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
+        .auth-container {
+            max-width: 450px;
+            margin: 50px auto;
+        }
+
+        .card {
+            border: 2px solid #3b2416;
+            border-radius: 10px;
+        }
+
+        h3 {
+            color: #3b2416;
+        }
+
+        .nav-pills .nav-link {
+            color: #3b2416;
+            font-weight: bold;
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: #c6893f !important;
+            color: white !important;
+        }
+
+        .btn-caffe {
+            background-color: #c6893f;
+            color: white;
+            font-weight: bold;
+            border: none;
+            padding: 10px;
+        }
+
+        .btn-caffe:hover, .btn-caffe:focus {
+            background-color: #c6893f;
+            color: white;
+            box-shadow: none;
+        }
+
+        .admin-link {
+            text-align: center;
+            margin-top: 20px;
+            display: block;
+            font-size: 14px;
+            color: #3b2416;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-container">
+        <div class="card p-4 shadow-sm">
+            <h3 class="text-center mb-4">Đăng Nhập Khách Hàng</h3>
+
+            <ul class="nav nav-pills nav-fill mb-4">
+                <li class="nav-item">
+                    <a class="nav-link active" href="Dangnhapuser.html">Đăng nhập</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Dangkyuser.html">Đăng ký</a>
+                </li>
+            </ul>
+
+            <form id="f-user-login">
+                <div class="mb-3">
+                    <label class="form-label text-dark fw-bold">Số điện thoại</label>
+                    <input type="tel" name="phone" class="form-control" placeholder="Nhập số điện thoại" pattern="[0-9]{10}" maxlength="10" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-dark fw-bold">Mật khẩu</label>
+                    <input type="password" name="pass" class="form-control" placeholder="Nhập mật khẩu" required>
+                </div>
+                <button type="submit" class="btn btn-caffe w-100 mt-2">Đăng nhập</button>
+            </form>
+            <a href="Dangnhapadmin.html" class="admin-link">Bạn là Quản trị viên? Đăng nhập Admin</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('f-user-login').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            let phoneInput = this.phone.value.trim();
+            let passInput = this.pass.value.trim();
+
+            if (phoneInput === '' || passInput === '') {
+                alert('Bạn chưa nhập số điện thoại hoặc mật khẩu!');
+                return;
+            }
+            
+            let userList = JSON.parse(localStorage.getItem('usersDB')) || [];
+
+            if (userList.length === 0) {
+                alert('Hệ thống chưa có tài khoản nào. Vui lòng đăng ký trước!');
+                return;
+            }
+            
+            let foundUser = userList.find(user => user.phone === phoneInput && user.password === passInput);
+
+            if (foundUser) {
+                sessionStorage.setItem('currentUserName', foundUser.name);
+                alert('Đăng nhập thành công! Xin chào ' + foundUser.name);
+                window.location.href = 'index.html';
+            } else {
+                alert('Sai số điện thoại hoặc mật khẩu! Vui lòng thử lại.');
+            }
+        });
+    </script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
